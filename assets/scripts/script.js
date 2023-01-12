@@ -113,29 +113,37 @@ function getPasswordOptions() {
     alert("The value input is not a numeric value between 10 - 64")
   }
   while (true) {
+    // Infinite loop that asks for each special character
     confirmOption("Uppercase", upperCasedCharacters, characterArray);
     confirmOption("Lowercase", lowerCasedCharacters, characterArray);
     confirmOption("Numeric", numericCharacters, characterArray);
     confirmOption("Special", specialCharacters, characterArray);
+    // Redo the loop if no options are chosen
     if (characterArray.length === 0) {
       continue;
     }
+    // Return the area that is the length of the password, with an array with all the possibilities in each position
     return new Array(characterNumber).fill(characterArray)
   } 
 }
 
 // Function for getting a random element from an array
 function getRandom(arr) {
+  // Get the length of the array and choose a number between the start and the end randomly
   return arr[Math.floor(Math.random()*arr.length)];
 }
 
 // Function to generate password with user input
 function generatePassword() {
+  // Create an empty string.
   let password = "";
+  // Get an array the length of the password, with each one being all the possible characters in that position.
   let possibilities = getPasswordOptions();
+  // For every character choose one of the possibilities at random
   for (i = 0; i < possibilities.length; i++) {
     password += (getRandom(possibilities[i]));
   }
+  // Return the constructed password
   return password;
 }
 
@@ -146,7 +154,7 @@ var generateBtn = document.querySelector('#generate');
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector('#password');
-
+  // Set the password field on the page to the generated password
   passwordText.value = password;
 }
 
