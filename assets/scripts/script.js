@@ -90,7 +90,38 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-
+  // Function used to remove repitition
+  function confirmOption(name, characterSet, optionArray) {
+    // Check for user input to decide to include the character set or not
+    if (confirm(`Use ${name} Characters? Press OK to use ${name} characters or cancel to not include them in the password.`))
+      // Add the options to the array if the user chooses ok,
+      return optionArray.push(...characterSet);
+    else {
+      // Return the original array if the user does not want to include the options.
+      return optionArray;
+    };
+  }
+  // Create the variables outside of the loops
+  let characterNumber;
+  let characterArray = [];
+  while (true) {
+    // An infinite loop is used until a correct number is input.
+    characterNumber = parseInt(prompt("Choose a number of characters between 10 - 64."));
+    if ((typeof characterNumber === "number") && (characterNumber >= 10) && (characterNumber <= 64)){
+      break;
+    }
+    alert("The value input is not a numeric value between 10 - 64")
+  }
+  while (true) {
+    confirmOption("Uppercase", upperCasedCharacters, characterArray);
+    confirmOption("Lowercase", lowerCasedCharacters, characterArray);
+    confirmOption("Numeric", numericCharacters, characterArray);
+    confirmOption("Special", specialCharacters, characterArray);
+    if (characterArray.length === 0) {
+      continue;
+    }
+    return new Array(characterNumber).fill(characterArray)
+  } 
 }
 
 // Function for getting a random element from an array
@@ -100,7 +131,12 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
-
+  let password = "";
+  let possibilities = getPasswordOptions();
+  for (i = 0; i < possibilities.length; i++) {
+    password += (getRandom(possibilities[i]));
+  }
+  return password;
 }
 
 // Get references to the #generate element
