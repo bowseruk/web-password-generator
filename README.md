@@ -38,6 +38,8 @@ The changes were checked with [W3C Validator](https://validator.w3.org/).
 
 [Stack Overflow](https://stackoverflow.com/) always seems to have the answer to a problem that occurs.
 
+[MDN](https://developer.mozilla.org/en-US/) is a very comprehensive and useful resource.
+
 
 ## License
 
