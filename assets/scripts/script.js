@@ -153,10 +153,12 @@ var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input.
 function writePassword() {
+  document.getElementById('favicon').setAttribute("href", `assets/images/unlocked.ico`)
   var password = generatePassword();
   var passwordText = document.querySelector('#password');
   // Set the password field on the page to the generated password.
   passwordText.value = password;
+  document.getElementById('favicon').setAttribute("href", `assets/images/locked.ico`)
 }
 
 // Add event listener to generate button.
