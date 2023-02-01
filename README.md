@@ -1,4 +1,4 @@
-# Bootcamp Project 5 - Password Generator
+# Bootcamp Challenge 5 - Password Generator
 
 ## Description 
 
